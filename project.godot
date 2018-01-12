@@ -11,10 +11,12 @@ config_version=3
 [application]
 
 config/name="Waves"
+run/main_scene="res://scenes/world.tscn"
 config/icon="res://assets/icon.png"
 
 [node]
 
+name_num_separator=3
 name_casing=1
 
 [rendering]

@@ -1,2 +1,11 @@
+# godot
+
 *.import
 /.import
+
+# nim
+
+.nimcache
+/_dlls
+/_godotapi
+/nakefile
