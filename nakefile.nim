@@ -42,7 +42,7 @@ task "build", "Builds the client for the current platform":
       "nim_linux" & bitsPostfix & ".so"
     else: nil
   withDir "src":
-    direShell(["nimble", "c", ".."/"src"/"waves.nim", "-o:.."/"_dlls"/libFile])
+    direShell(["nimble", "c", ".."/"src"/"main.nim", "-o:.."/"_dlls"/libFile])
 
 task "clean", "Remove files produced by build":
   removeDir(".nimcache")
