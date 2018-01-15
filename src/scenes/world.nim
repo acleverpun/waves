@@ -1,7 +1,10 @@
-import godot
-import node_2d
+include ../polyfill
+
+import
+  input,
+  node_2d,
+  scene_tree
 
 gdobj World of Node2d:
-  method ready*() =
-    echo "foo"
-    print "bar"
+  method input(event: InputEvent) =
+    if input.isActionJustPressed("quit"): getTree().quit()
