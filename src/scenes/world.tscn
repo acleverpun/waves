@@ -9,10 +9,12 @@ resource_name = "World"
 class_name = "World"
 library = ExtResource( 1 )
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 script = SubResource( 1 )
 
 [node name="player" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 128, 112 )
 
 
