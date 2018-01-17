@@ -1,6 +1,14 @@
 import ospaths
 
-switch("nimcache", ".nimcache"/hostOS/hostCPU)
+switch("app", "lib")
+switch("define", "useRealtimeGc")
+switch("nimcache", "nimcache"/hostOS/hostCPU)
+switch("noMain")
+switch("path", "../lib/godotapi")
+switch("threads", "on")
+switch("verbosity", "0")
+
+hint("Processing", false)
 
 when defined(macosx):
   when defined(ios):

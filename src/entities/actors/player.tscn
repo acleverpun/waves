@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://nimlib.gdnlib" type="GDNativeLibrary" id=1]
+[ext_resource path="res://lib/nimlib.gdnlib" type="GDNativeLibrary" id=1]
 
 [sub_resource type="NativeScript" id=1]
 

@@ -5,7 +5,7 @@
 
 # nim
 
-.nimcache
-/_dlls
-/_godotapi
+/lib/godotapi
+/lib/headers
 /nakefile
+/nimcache

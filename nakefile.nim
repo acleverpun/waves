@@ -13,7 +13,7 @@ proc genGodotApi() =
     echo "Invalid GODOT_BIN path: " & godotBin
     quit(-1)
 
-  const targetDir = "_godotapi"
+  const targetDir = "lib"/"godotapi"
   createDir(targetDir)
   const jsonFile = targetDir/"api.json"
   if not fileExists(jsonFile) or
@@ -27,7 +27,7 @@ proc genGodotApi() =
 
 task "build", "Builds the client for the current platform":
   genGodotApi()
-  createDir("_dlls")
+  createDir("lib"/"headers")
   let bitsPostfix = when sizeof(int) == 8: "_64" else: "_32"
   let libFile =
     when defined(windows):
@@ -41,12 +41,10 @@ task "build", "Builds the client for the current platform":
     elif defined(linux):
       "nim_linux" & bitsPostfix & ".so"
     else: nil
-  withDir "src":
-    direShell(["nimble", "c", ".."/"src"/"main.nim", "-o:.."/"_dlls"/libFile])
+  direShell(["nimble", "c", "src"/"waves.nim", "-o:lib"/"headers"/libFile])
 
 task "clean", "Remove files produced by build":
-  removeDir(".nimcache")
-  removeDir("src"/".nimcache")
-  removeDir("_godotapi")
-  removeDir("_dlls")
+  removeDir("lib"/"godotapi")
+  removeDir("lib"/"headers")
+  removeDir("nimcache")
   removeFile("nakefile")
