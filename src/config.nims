@@ -8,6 +8,7 @@ switch("path", "../lib/godotapi")
 switch("threads", "on")
 switch("verbosity", "0")
 
+hint("Conf", false)
 hint("Processing", false)
 
 when defined(macosx):

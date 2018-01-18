@@ -1,9 +1,9 @@
 import math, strutils
 
-include ../../global
+include globals
 
 import
-  ../../utils/math_utils,
+  utils/math_utils,
   input,
   node_2d,
   polygon_2d,

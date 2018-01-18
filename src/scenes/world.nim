@@ -1,4 +1,4 @@
-include ../global
+include globals
 
 import
   input,
