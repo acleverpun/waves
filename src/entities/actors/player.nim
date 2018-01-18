@@ -28,13 +28,16 @@ gdobj Player of Polygon2d:
   method process(dt: float64) =
     var movement, rotation: Vector2
 
+    # TODO: breakout controller and keyboard/mouse into a controller class
+
     # controller
 
     if input.isJoyKnown(0):
       movement = vec2(input.getJoyAxis(0, 0), input.getJoyAxis(0, 1))
       rotation = vec2(input.getJoyAxis(0, 2), input.getJoyAxis(0, 3))
 
-    # keyboard
+    # keyboard / mouse
+    # TODO: use cursor lock
 
     if movement.length < deadzone[0]:
       if input.isActionPressed("left"): movement += LEFT
@@ -47,13 +50,13 @@ gdobj Player of Polygon2d:
 
     if movement.length >= deadzone[0]: move(movement, dt)
 
+    # TODO: better keyboard/controller distinction
     # TODO: use a real lerp
-    # TODO: fix crossing the +-0 angle
     if rotation.length >= deadzone[1]:
       targetRot = rotation.angle
     if targetRot != self.rotation:
       if abs(targetRot - self.rotation) <= 0.1: self.rotation = targetRot
-      else: self.rotation = lerp(self.rotation, targetRot, angularSpeed * dt)
+      else: self.rotation = lerpAngle(self.rotation, targetRot, angularSpeed * dt)
 
   method move(vector: Vector2, dt: float64) {.base.} =
     var movement = vector.clamped(1) * speed * dt
