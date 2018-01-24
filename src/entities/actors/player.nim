@@ -1,13 +1,15 @@
-import math, strutils
-
 include globals
 
+import math, strutils
+
 import
-  utils/math_utils,
   input,
   node_2d,
   polygon_2d,
   viewport
+
+import
+  utils/math_utils
 
 const
   LEFT = vec2(-1, 0)
