@@ -1,6 +1,8 @@
 include globals
 
-import math, strutils
+import
+  math,
+  strutils
 
 import
   input,

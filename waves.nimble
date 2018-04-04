@@ -13,4 +13,4 @@ skipFiles = @[
   "global.nim",
 ]
 
-requires "godot >= 0.7.1 & < 0.8.0"
+requires "godot >= 0.7.8 & < 0.8.0"
