@@ -1,0 +1,10 @@
+# godot
+
+/.import
+
+# nim
+
+/lib/godotapi
+/lib/headers
+/nakefile
+/nimcache
