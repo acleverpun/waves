@@ -7,7 +7,8 @@ import
 
 gdobj World of Spatial:
   method ready() =
-    input.setMouseMode(input.MOUSE_MODE_CAPTURED)
+    # input.setMouseMode(input.MOUSE_MODE_CONFINED)
+    discard
 
   method input(event: InputEvent) =
     if input.isActionJustPressed("quit"):

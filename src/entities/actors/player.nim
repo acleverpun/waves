@@ -2,23 +2,45 @@ include globals
 
 import
   input,
-  kinematic_body
+  input_event,
+  input_event_mouse_motion,
+  kinematic_body,
+  math
 
 const
   left = vec3(-1, 0, 0)
   right = vec3(1, 0, 0)
   forward = vec3(0, 0, -1)
   backward = vec3(0, 0, 1)
+  up = vec3(0, 1, 0)
+  down = vec3(0, -1, 0)
 
 gdobj Player of KinematicBody:
-  var speed* = 1.0
+  var speed* = 8.0
+  var angularSpeed* = PI / 2
+  var mouseSensitivity* = 0.05
 
-  var velocity: Vector3
+  method input(event: InputEvent) =
+    if event of InputEventMouseMotion and input.isMouseButtonPressed(2):
+      let motionEvent = event as InputEventMouseMotion
+      let camera = getNode("camera") as Spatial
+      # camera.rotateY(PI / 180 * -motionEvent.relative.x * mouseSensitivity)
+      # camera.lookAt(self as Spatial)
 
   method process(dt: float) =
-    if input.isActionPressed("left"): velocity += left
-    if input.isActionPressed("right"): velocity += right
-    if input.isActionPressed("forward"): velocity += forward
-    if input.isActionPressed("backward"): velocity += backward
+    let cameraGrabbed = input.isMouseButtonPressed(2)
 
-    velocity = moveAndSlide(velocity)
+    if input.isActionPressed("move_left"):
+      if cameraGrabbed:
+        translateObjectLocal(left * speed * dt)
+      else:
+        rotateY(angularSpeed * dt)
+    if input.isActionPressed("move_right"):
+      if cameraGrabbed:
+        translateObjectLocal(right * speed * dt)
+      else:
+        rotateY(-angularSpeed * dt)
+    if input.isActionPressed("move_forward"):
+      translateObjectLocal(forward * speed * dt)
+    if input.isActionPressed("move_backward"):
+      translateObjectLocal(backward * speed * dt)
