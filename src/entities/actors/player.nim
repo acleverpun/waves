@@ -8,43 +8,38 @@ import
 gdobj Player of KinematicBody:
   var speed* = 10.0
   var angularSpeed* = PI
+  var autorun = false
 
   method process(dt: float) =
     let cameraGrabbed = input.isMouseButtonPressed(2)
     let anchor = getNode("anchor") as Spatial
 
+    var move: Vector3
+
+    if input.isActionJustPressed("move_autorun"): autorun = not autorun
+
     # cardinals
     if input.isActionPressed("move_forward"):
-      self.rotateY(anchor.rotation.y)
-      anchor.rotation = ZERO
-      translate(FORWARD * speed * dt)
+      move += FORWARD
+      autorun = false
     if input.isActionPressed("move_backward"):
-      self.rotateY(anchor.rotation.y)
-      anchor.rotation = ZERO
-      translate(BACKWARD * speed * dt)
-    if input.isActionPressed("move_left"):
-      self.rotateY(anchor.rotation.y)
-      anchor.rotation = ZERO
-      translate(LEFT * speed * dt)
-    if input.isActionPressed("move_right"):
-      self.rotateY(anchor.rotation.y)
-      anchor.rotation = ZERO
-      translate(RIGHT * speed * dt)
+      move += BACKWARD
+      autorun = false
+    if input.isActionPressed("move_left") or cameraGrabbed and input.isActionPressed("move_turn_left"):
+      move += LEFT
+    if input.isActionPressed("move_right") or cameraGrabbed and input.isActionPressed("move_turn_right"):
+      move += RIGHT
+
+    # autorun
+    if autorun: move += FORWARD
 
     # turning
-    if input.isActionPressed("move_turn_left"):
-      if cameraGrabbed:
-        self.rotateY(anchor.rotation.y)
-        anchor.rotation = ZERO
-        translate(LEFT * speed * dt)
-      else:
-        rotateY(angularSpeed * dt)
-    if input.isActionPressed("move_turn_right"):
-      if cameraGrabbed:
-        self.rotateY(anchor.rotation.y)
-        anchor.rotation = ZERO
-        translate(RIGHT * speed * dt)
-      else:
-        rotateY(-angularSpeed * dt)
-    if input.isActionJustPressed("move_turn_around"):
-      rotateY(PI)
+    if not cameraGrabbed:
+      if input.isActionPressed("move_turn_left"): rotateY(angularSpeed * dt)
+      if input.isActionPressed("move_turn_right"): rotateY(-angularSpeed * dt)
+    if input.isActionJustPressed("move_turn_around"): rotateY(PI)
+
+    if move != ZERO:
+      rotateY(anchor.rotation.y)
+      anchor.rotation = ZERO
+      translate(move.normalized * speed * dt)
