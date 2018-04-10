@@ -16,20 +16,24 @@ const
   down = vec3(0, -1, 0)
 
 gdobj Player of KinematicBody:
-  var speed* = 8.0
-  var angularSpeed* = PI / 2
-  var mouseSensitivity* = 0.05
+  var speed* = 10.0
+  var angularSpeed* = PI
+  var mouseSensitivity* = 0.2
 
   method input(event: InputEvent) =
     if event of InputEventMouseMotion and input.isMouseButtonPressed(2):
       let motionEvent = event as InputEventMouseMotion
-      let camera = getNode("camera") as Spatial
-      # camera.rotateY(PI / 180 * -motionEvent.relative.x * mouseSensitivity)
-      # camera.lookAt(self as Spatial)
+      let tether = getNode("cameraTether") as Spatial
+      tether.rotateY(PI / 180 * -motionEvent.relative.x * mouseSensitivity)
 
   method process(dt: float) =
     let cameraGrabbed = input.isMouseButtonPressed(2)
 
+    # cardinals
+    if input.isActionPressed("move_forward"):
+      translate(forward * speed * dt)
+    if input.isActionPressed("move_backward"):
+      translateObjectLocal(backward * speed * dt)
     if input.isActionPressed("move_left"):
       if cameraGrabbed:
         translateObjectLocal(left * speed * dt)
@@ -40,7 +44,8 @@ gdobj Player of KinematicBody:
         translateObjectLocal(right * speed * dt)
       else:
         rotateY(-angularSpeed * dt)
-    if input.isActionPressed("move_forward"):
-      translateObjectLocal(forward * speed * dt)
-    if input.isActionPressed("move_backward"):
-      translateObjectLocal(backward * speed * dt)
+    # strafing
+    if input.isActionPressed("move_strafe_left"):
+      translateObjectLocal(left * speed * dt)
+    if input.isActionPressed("move_strafe_right"):
+      translateObjectLocal(right * speed * dt)

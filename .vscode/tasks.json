@@ -1,0 +1,22 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build nake",
+			"type": "shell",
+			"command": "GODOT_BIN=/usr/bin/godot /home/ross/.nimble/bin/nake build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}, {
+			"label": "Run godot",
+			"type": "shell",
+			"command": "godot --path=.",
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			}
+		}
+	]
+}
