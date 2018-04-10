@@ -21,3 +21,4 @@ const
   BACKWARD* = vec3(0, 0, 1)
   UP* = vec3(0, 1, 0)
   DOWN* = vec3(0, -1, 0)
+  ZERO* = vec3(0, 0, 0)
