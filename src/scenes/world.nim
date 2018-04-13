@@ -2,16 +2,13 @@ include globals
 
 import
   input,
-  scene_tree,
-  spatial
+  node_2d,
+  scene_tree
 
-gdobj World of Spatial:
+gdobj World of Node2d:
   method ready() =
-    # input.setMouseMode(input.MOUSE_MODE_CONFINED)
     discard
 
   method input(event: InputEvent) =
-    if input.isActionJustPressed("quit"):
-      input.setMouseMode(input.MOUSE_MODE_VISIBLE)
-      getTree().quit()
+    if input.isActionJustPressed("quit"): getTree().quit()
     elif input.isActionJustPressed("restart"): discard getTree().reloadCurrentScene()

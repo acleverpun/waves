@@ -2,44 +2,24 @@ include globals
 
 import
   input,
-  kinematic_body,
-  math
+  kinematic_body_2d
 
-gdobj Player of KinematicBody:
-  var speed* = 10.0
-  var angularSpeed* = PI
-  var autorun = false
+gdobj Player of KinematicBody2d:
+  var speed* = 10000.0
 
   method process(dt: float) =
-    let cameraGrabbed = input.isMouseButtonPressed(2)
-    let anchor = getNode("anchor") as Spatial
-
-    var move: Vector3
-
-    if input.isActionJustPressed("move_autorun"): autorun = not autorun
+    var move: Vector2
 
     # cardinals
-    if input.isActionPressed("move_forward"):
-      move += FORWARD
-      autorun = false
-    if input.isActionPressed("move_backward"):
-      move += BACKWARD
-      autorun = false
-    if input.isActionPressed("move_left") or cameraGrabbed and input.isActionPressed("move_turn_left"):
+    if input.isActionPressed("move_up"):
+      move += UP
+    if input.isActionPressed("move_down"):
+      move += DOWN
+    if input.isActionPressed("move_left"):
       move += LEFT
-    if input.isActionPressed("move_right") or cameraGrabbed and input.isActionPressed("move_turn_right"):
+    if input.isActionPressed("move_right"):
       move += RIGHT
 
-    # autorun
-    if autorun: move += FORWARD
-
-    # turning
-    if not cameraGrabbed:
-      if input.isActionPressed("move_turn_left"): rotateY(angularSpeed * dt)
-      if input.isActionPressed("move_turn_right"): rotateY(-angularSpeed * dt)
-    if input.isActionJustPressed("move_turn_around"): rotateY(PI)
-
     if move != ZERO:
-      rotateY(anchor.rotation.y)
-      anchor.rotation = ZERO
-      translate(move.normalized * speed * dt)
+      self.rotation = move.angle
+      discard moveAndSlide(move.normalized * speed * dt)
