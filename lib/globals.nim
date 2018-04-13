@@ -1,5 +1,6 @@
 import
   godot,
+  input,
   strutils
 
 template debug*(values: varargs[string, `$`]): typed =

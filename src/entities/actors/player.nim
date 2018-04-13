@@ -7,7 +7,7 @@ import
 gdobj Player of KinematicBody2d:
   var speed* = 10000.0
 
-  method process(dt: float) =
+  method physicsProcess(dt: float) =
     var move: Vector2
 
     # cardinals
