@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Arpeggio"
+config/name="Waves"
 run/main_scene="res://src/scenes/world.tscn"
 config/icon="res://assets/icons/icon.png"
 

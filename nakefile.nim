@@ -41,7 +41,7 @@ task "build", "Builds the client for the current platform":
     elif defined(linux):
       "nim_linux" & bitsPostfix & ".so"
     else: nil
-  direShell(["nimble", "c", "src"/"arpeggio.nim", "-o:lib"/"headers"/libFile])
+  direShell(["nimble", "c", "src"/"waves.nim", "-o:lib"/"headers"/libFile])
 
 task "clean", "Remove files produced by build":
   removeDir("lib"/"godotapi")

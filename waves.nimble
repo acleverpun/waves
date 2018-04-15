@@ -1,6 +1,6 @@
 version = "0.0.0"
 author = "Ross Hadden"
-description = "Arpeggio, a Godot game"
+description = "A 2D wave survival adventure rpg game"
 license = "MIT"
 
 srcDir = "src"
