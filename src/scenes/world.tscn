@@ -14,7 +14,7 @@ library = ExtResource( 1 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="world" parent="." index="0" instance=ExtResource( 2 )]
+[node name="map" parent="." index="0" instance=ExtResource( 2 )]
 
 [node name="player" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( 256, 256 )
