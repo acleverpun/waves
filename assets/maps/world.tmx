@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="64" tileheight="64" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="rpg-pack" tilewidth="64" tileheight="64" tilecount="260" columns="20">
+  <image source="../tiles/rpg-pack.png" width="1280" height="832"/>
+ </tileset>
+ <layer name="ground" width="64" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt1rENgCAQQFHURF1ATNQF1ETdfzqvsSEYFBr0fvEqGn4IB9YYY6FeLRrRZrCX1IYQX+MgRjFl0BHragjxNW5iF0cGHan9hSg9qh+c8ZP+7ma9V9bvzjRt/e5M09bvzjRt/S4t/bNYPFYl/THv/x9c9z3ky38cAAAAAAAA4I0TldSxww==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="64" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAgHcDIAAAAQ==
+  </data>
+ </layer>
+</map>
