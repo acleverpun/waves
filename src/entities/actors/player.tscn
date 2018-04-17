@@ -13,7 +13,7 @@ library = ExtResource( 1 )
 
 custom_solver_bias = 0.0
 radius = 10.0
-height = 20.0
+height = 8.0
 
 [sub_resource type="NativeScript" id=3]
 
@@ -29,7 +29,9 @@ script = SubResource( 1 )
 
 [node name="collision" type="CollisionShape2D" parent="." index="0"]
 use_parent_material = true
+position = Vector2( 0, 12 )
 shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="pivot" type="Position2D" parent="." index="1"]
 script = SubResource( 3 )
@@ -66,11 +68,10 @@ _sections_unfolded = [ "Editor", "Smoothing" ]
 
 [node name="sprite" type="Sprite" parent="." index="2"]
 rotation = 3.14159
-_sections_unfolded = [ "Transform" ]
 
 [node name="viewport" type="Viewport" parent="." index="3"]
 arvr = false
-size = Vector2( 64, 64 )
+size = Vector2( 60, 80 )
 own_world = false
 world = null
 transparent_bg = true
@@ -92,7 +93,6 @@ shadow_atlas_quad_0 = 2
 shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
-_sections_unfolded = [ "Render Target" ]
 
 [node name="camera" type="Camera" parent="viewport" index="0"]
 transform = Transform( 1, 0, 0, 0, 0.621493, 0.78342, 0, -0.78342, 0.621493, 0, 13.539, 10.9485 )
