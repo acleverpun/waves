@@ -36,7 +36,8 @@ script = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="camOffset" type="Position2D" parent="pivot" index="0"]
-position = Vector2( 96, 0 )
+position = Vector2( 128, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="cam" type="Camera2D" parent="pivot/camOffset" index="0"]
 anchor_mode = 1

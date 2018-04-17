@@ -14,19 +14,22 @@ gdobj Player of KinematicBody2d:
   var speed* = 10000.0
   var runModifier* = 4.0
 
-  var animation: string
-  var tween = 0.2
+  var anim: string
+  var animTween = 0.2
+  var animSpeed = 1.0
 
   var viewport: Viewport
   var sprite: Sprite
   var model: Spatial
   var animPlayer: AnimationPlayer
+  var pivot: Node2d
 
   method ready() =
     viewport = getNode("viewport") as Viewport
     sprite = getNode("sprite") as Sprite
     model = viewport.getNode("model") as Spatial
     animPlayer = model.getNode("animationPlayer") as AnimationPlayer
+    pivot = getNode("pivot") as Node2d
 
     sprite.texture = viewport.getTexture()
 
@@ -36,7 +39,8 @@ gdobj Player of KinematicBody2d:
   method physicsProcess(dt: float) =
     var move: Vector2
     var currentSpeed = speed
-    var currentAnimation = animation
+    var currentAnim = anim
+    var currentAnimSpeed = animSpeed
 
     # cardinals
     if input.isActionPressed("move_up"):
@@ -48,16 +52,18 @@ gdobj Player of KinematicBody2d:
     if input.isActionPressed("move_right"):
       move += RIGHT
 
-    if input.isActionPressed("move_run"):
-      currentSpeed *= runModifier
-
     if move == ZERO:
-      currentAnimation = "Idle"
+      currentAnim = "Idle"
     else:
-      currentAnimation = "Walk"
+      if input.isActionPressed("move_run"):
+        currentSpeed *= runModifier
+        currentAnimSpeed *= runModifier
+
+      currentAnim = "Walk"
+      pivot.rotation = move.angle
       model.rotation = vec3(0, move.angle - PI/2, 0)
       discard moveAndSlide(move.normalized * currentSpeed * dt)
 
-    if currentAnimation != animation:
-      animation = currentAnimation
-      animPlayer.play(currentAnimation, tween)
+    if currentAnim != anim or input.isActionJustPressed("move_run") or input.isActionJustReleased("move_run"):
+      anim = currentAnim
+      animPlayer.play(currentAnim, animTween, currentAnimSpeed)
