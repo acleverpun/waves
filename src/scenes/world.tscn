@@ -19,15 +19,28 @@ cell_y_sort = false
 [node name="walls" parent="." index="1"]
 cell_y_sort = false
 
-[node name="decorations" parent="." index="2"]
-cell_y_sort = false
-
-[node name="objects" parent="." index="3"]
+[node name="entities" parent="." index="3"]
 editor/display_folded = false
 
-[node name="player" parent="objects" index="0" instance=ExtResource( 3 )]
-position = Vector2( 464, 448 )
+[node name="staticBody2D" type="StaticBody2D" parent="entities/barrel" index="0"]
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
-[node name="roofs" parent="." index="4"]
+[node name="collisionPolygon2D" type="CollisionPolygon2D" parent="entities/barrel/staticBody2D" index="0"]
+build_mode = 0
+polygon = PoolVector2Array( 16, 0, 48, 0, 48, -32, 16, -32 )
+
+[node name="on-ground" parent="." index="4"]
+editor/display_folded = false
+
+[node name="player" parent="on-ground" index="0" instance=ExtResource( 3 )]
+position = Vector2( 480, 1136 )
+
+[node name="roofs" parent="." index="5"]
 cell_y_sort = false
 
