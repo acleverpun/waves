@@ -2,6 +2,46 @@
 <map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="256" height="128" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
  <tileset firstgid="1" name="roguelikeSheet" tilewidth="16" tileheight="16" spacing="1" tilecount="1767" columns="57">
   <image source="../tiles/roguelikeSheet.png" width="968" height="526"/>
+  <tile id="550">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="9" width="16" height="7"/>
+   </objectgroup>
+  </tile>
+  <tile id="551">
+   <objectgroup draworder="index">
+    <object id="1" x="5" y="9" width="11" height="7"/>
+   </objectgroup>
+  </tile>
+  <tile id="552">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="9" width="10" height="7"/>
+   </objectgroup>
+  </tile>
+  <tile id="602">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="7" width="16" height="9"/>
+   </objectgroup>
+  </tile>
+  <tile id="605">
+   <objectgroup draworder="index">
+    <object id="3" x="0" y="7" width="16" height="9"/>
+   </objectgroup>
+  </tile>
+  <tile id="608">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="9" width="16" height="7"/>
+   </objectgroup>
+  </tile>
+  <tile id="609">
+   <objectgroup draworder="index">
+    <object id="1" x="5" y="9" width="11" height="7"/>
+   </objectgroup>
+  </tile>
+  <tile id="610">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="9" width="10" height="7"/>
+   </objectgroup>
+  </tile>
   <tile id="640">
    <objectgroup draworder="index">
     <object id="6" x="5" y="4" width="6" height="12"/>
@@ -30,6 +70,31 @@
   <tile id="645">
    <objectgroup draworder="index">
     <object id="6" x="5" y="4" width="6" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="659">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="7" width="16" height="9"/>
+   </objectgroup>
+  </tile>
+  <tile id="662">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="7" width="16" height="9"/>
+   </objectgroup>
+  </tile>
+  <tile id="665">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="9" width="16" height="7"/>
+   </objectgroup>
+  </tile>
+  <tile id="666">
+   <objectgroup draworder="index">
+    <object id="1" x="5" y="9" width="11" height="7"/>
+   </objectgroup>
+  </tile>
+  <tile id="667">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="9" width="10" height="7"/>
    </objectgroup>
   </tile>
   <tile id="1214">
@@ -106,7 +171,7 @@
  <objectgroup name="entities"/>
  <layer name="objects" width="256" height="128">
   <data encoding="base64" compression="zlib">
-   eJzt2rEJADAIBEDJ5oEMng0kjYjhboJv5L8wAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4N1e3QkAgGon6XtbAOZyvwDwv2zLAwAAAAAAAAAAAADz+BEGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6XZEnAxw=
+   eJzt2rENgCAQBVBiXJRRTNzBhE3paG0kUhAU3pvgmrv7xQ8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgvWMbPQEA0NtZ+feyAPyX/QWA+dWyPAAAAAAAAADAk0vnAAAAPktHGGiRbjcjuh8AALCcvI+eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACYUQHxVAWx
   </data>
  </layer>
  <layer name="roofs" width="256" height="128">
