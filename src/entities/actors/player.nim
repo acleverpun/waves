@@ -3,12 +3,17 @@ include globals
 import
   animation,
   animation_player,
+  camera_2d,
   input,
   kinematic_body_2d,
   math,
   spatial,
   sprite,
   viewport
+
+const zoomMax = 1
+const zoomMin = 0.2
+const zoomStep = vec2(0.1, 0.1)
 
 gdobj Player of KinematicBody2d:
   var speed* = 5000.0
@@ -23,6 +28,7 @@ gdobj Player of KinematicBody2d:
   var model: Spatial
   var animPlayer: AnimationPlayer
   var pivot: Node2d
+  var cam: Camera2d
 
   method ready() =
     viewport = getNode("viewport") as Viewport
@@ -30,6 +36,7 @@ gdobj Player of KinematicBody2d:
     model = viewport.getNode("model") as Spatial
     animPlayer = model.getNode("animationPlayer") as AnimationPlayer
     pivot = getNode("pivot") as Node2d
+    cam = pivot.findNode("cam") as Camera2d
 
     sprite.texture = viewport.getTexture()
 
@@ -67,3 +74,9 @@ gdobj Player of KinematicBody2d:
     if currentAnim != anim or input.isActionJustPressed("move_run") or input.isActionJustReleased("move_run"):
       anim = currentAnim
       animPlayer.play(currentAnim, animTween, currentAnimSpeed)
+
+  method input(event: InputEvent) =
+    if input.isActionPressed("cam_zoom_in") and cam.zoom.x > zoomMin:
+      cam.zoom = cam.zoom - zoomStep
+    if input.isActionPressed("cam_zoom_out") and cam.zoom.x < zoomMax:
+      cam.zoom = cam.zoom + zoomStep

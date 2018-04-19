@@ -14,6 +14,10 @@ config/name="Waves"
 run/main_scene="res://src/scenes/area.tscn"
 config/icon="res://assets/icons/icon.png"
 
+[audio]
+
+size/borderless=false
+
 [display]
 
 window/size/height=768
@@ -163,6 +167,16 @@ debug={
 use={
 "deadzone": 0.5,
 "events": [  ]
+}
+cam_zoom_in={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+cam_zoom_out={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
 }
 
 [node]
