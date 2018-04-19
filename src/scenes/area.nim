@@ -5,7 +5,7 @@ import
   node_2d,
   scene_tree
 
-gdobj World of Node2d:
+gdobj Area of Node2d:
   method ready() =
     discard
 

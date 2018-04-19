@@ -11,7 +11,7 @@ import
   viewport
 
 gdobj Player of KinematicBody2d:
-  var speed* = 10000.0
+  var speed* = 5000.0
   var runModifier* = 4.0
 
   var anim: string

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="256" height="128" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="roguelikeSheet" tilewidth="16" tileheight="16" spacing="1" tilecount="1767" columns="57">
+  <image source="../tiles/roguelikeSheet.png" width="968" height="526"/>
+  <tile id="640">
+   <objectgroup draworder="index">
+    <object id="6" x="5" y="4" width="6" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="641">
+   <objectgroup draworder="index">
+    <object id="1" x="5" y="4" width="6" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="642">
+   <objectgroup draworder="index">
+    <object id="1" x="5" y="4" width="6" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="643">
+   <objectgroup draworder="index">
+    <object id="1" x="5" y="4" width="6" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="644">
+   <objectgroup draworder="index">
+    <object id="1" x="5" y="4" width="6" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="645">
+   <objectgroup draworder="index">
+    <object id="6" x="5" y="4" width="6" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="1214">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="1215">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="1216">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="1271">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="1272">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="1273">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="1328">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="1329">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="1330">
+   <objectgroup draworder="index">
+    <object id="2" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="ground" width="256" height="128">
+  <data encoding="base64" compression="zlib">
+   eJzt1DEBADAMwKBetTX/riYjRzmwwM7MAic94Kz6H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0DnA6WrQQA=
+  </data>
+ </layer>
+ <layer name="on-ground" width="256" height="128">
+  <data encoding="base64" compression="zlib">
+   eJzt0zEOQEAQhtGxpWPhVrgUB5E4kS1WQU1E9r3kr6aa4osAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/mhNEVsTsd/Wpuvu93NL+voD4Gld7rovGzQOVdE/1Ev/UC/9Q73G3PxUNusfAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeMkBiD0Q8A==
+  </data>
+ </layer>
+ <layer name="walls" width="256" height="128">
+  <data encoding="base64" compression="zlib">
+   eJzt0zEKgDAQBMArkgep/yf6q2hlwHwgaUSZge1u4ZqNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeJQUsfcc6e1vgFllYse13Z49l/3DZ9WJHds//MOSI9aWLY93RnsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA/910jhG9
+  </data>
+ </layer>
+ <layer name="on-walls" width="256" height="128">
+  <data encoding="base64" compression="zlib">
+   eJztzsENABAURMGvWBVQjca0w0EDDiJkJtns9UUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL/otwOAK/JcW7+jpIiaDgQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATxuExgMl
+  </data>
+ </layer>
+ <layer name="on-walls-x" width="256" height="128" offsetx="8" offsety="0">
+  <data encoding="base64" compression="zlib">
+   eJztxTEBAAAMAiDr2L+g/yoMHhIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4KueAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG92MAUw==
+  </data>
+ </layer>
+ <objectgroup name="entities"/>
+ <layer name="objects" width="256" height="128">
+  <data encoding="base64" compression="zlib">
+   eJzt2rEJADAIBEDJ5oEMng0kjYjhboJv5L8wAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4N1e3QkAgGon6XtbAOZyvwDwv2zLAwAAAAAAAAAAAADz+BEGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6XZEnAxw=
+  </data>
+ </layer>
+ <layer name="roofs" width="256" height="128">
+  <data encoding="base64" compression="zlib">
+   eJzt2jEKgDAQBMAg8Uf6B8Ffa+GjVFBRWyFCCMoMbHfFNUuuSAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOm6qvQGAEBu/cN77xaA79JfAPi/p1seIMUQQ5iujLH0NsBbw4sez8dsfWbRf/isu8spPW72+TWeaetsqwGZ3V3WYwAAAAAAAPgPf4QBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEjaeVg83
+  </data>
+ </layer>
+</map>
