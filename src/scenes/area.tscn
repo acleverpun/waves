@@ -13,9 +13,9 @@ library = ExtResource( 2 )
 [node name="area" index="0" instance=ExtResource( 1 )]
 script = SubResource( 1 )
 
-[node name="objects" parent="." index="6"]
+[node name="main" parent="." index="5"]
 editor/display_folded = false
 
-[node name="player" parent="objects" index="0" instance=ExtResource( 3 )]
+[node name="player" parent="main" index="0" instance=ExtResource( 3 )]
 position = Vector2( 1872, 1072 )
 
