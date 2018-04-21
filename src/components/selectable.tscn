@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://lib/nimlib.gdnlib" type="GDNativeLibrary" id=1]
+
+[sub_resource type="NativeScript" id=1]
+
+resource_name = "Selectable"
+class_name = "Selectable"
+library = ExtResource( 1 )
+
+[node name="selectable" type="Node"]
+script = SubResource( 1 )
+

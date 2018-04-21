@@ -1,5 +1,7 @@
 extends Node
 
+var Selectable = load("res://src/components/selectable.tscn")
+
 func setOwner(scene, node):
 	node.set_owner(scene)
 	for child in node.get_children():
@@ -20,6 +22,11 @@ func post_import(scene):
 
 		for child in layer.get_children():
 			reparent(scene, child, main)
+			if child.has_meta("selectable"):
+				child.input_pickable = true
+				var selectable = Selectable.instance()
+				child.add_child(selectable)
+				setOwner(scene, selectable)
 		layer.free()
 
 	return scene
