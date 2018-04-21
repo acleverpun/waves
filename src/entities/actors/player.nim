@@ -27,7 +27,7 @@ gdobj Player of KinematicBody2d:
   var sprite: Sprite
   var model: Spatial
   var animPlayer: AnimationPlayer
-  var pivot: Node2d
+  var pivot, camOffset: Node2d
   var cam: Camera2d
 
   method ready() =
@@ -36,12 +36,15 @@ gdobj Player of KinematicBody2d:
     model = viewport.getNode("model") as Spatial
     animPlayer = model.getNode("animationPlayer") as AnimationPlayer
     pivot = getNode("pivot") as Node2d
-    cam = pivot.findNode("cam") as Camera2d
+    camOffset = pivot.getNode("camOffset") as Node2d
+    cam = camOffset.getNode("cam") as Camera2d
 
     sprite.texture = viewport.getTexture()
 
     animPlayer.getAnimation("Idle").loop = true
     animPlayer.getAnimation("Walk").loop = true
+
+    zoom()
 
   method physicsProcess(dt: float) =
     var move: Vector2
@@ -62,9 +65,12 @@ gdobj Player of KinematicBody2d:
     if move == ZERO:
       currentAnim = "Idle"
     else:
+      var camScalar = 256.0
       if input.isActionPressed("move_run"):
         currentSpeed *= runModifier
         currentAnimSpeed *= runModifier
+        camScalar *= 2
+      camOffset.position = vec2(camScalar * cam.zoom.x, 0)
 
       currentAnim = "Walk"
       pivot.rotation = move.angle
@@ -77,6 +83,16 @@ gdobj Player of KinematicBody2d:
 
   method input(event: InputEvent) =
     if input.isActionPressed("cam_zoom_in") and cam.zoom.x > zoomMin:
-      cam.zoom = cam.zoom - zoomStep
+      zoom(-1)
     if input.isActionPressed("cam_zoom_out") and cam.zoom.x < zoomMax:
-      cam.zoom = cam.zoom + zoomStep
+      zoom(1)
+
+  method zoom(scalar: float = 0) {.base.} =
+    cam.zoom = cam.zoom + scalar * zoomStep
+    camOffset.position = vec2(0, 0)
+
+    let dragMargin = 0.5 * cam.zoom.x
+    cam.dragMarginTop = dragMargin
+    cam.dragMarginBottom = dragMargin
+    cam.dragMarginLeft = dragMargin
+    cam.dragMarginRight = dragMargin
