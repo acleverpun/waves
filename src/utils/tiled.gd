@@ -1,11 +1,16 @@
 extends Node
 
-func reparent(scene, child, parent):
-	var oldParent = child.get_parent()
-	print(oldParent.name, " => ", parent.name, ": ", child.name)
-	oldParent.remove_child(child)
-	parent.add_child(child)
-	child.set_owner(scene)
+func setOwner(scene, node):
+	node.set_owner(scene)
+	for child in node.get_children():
+		setOwner(scene, child)
+
+func reparent(scene, node, parent):
+	var oldParent = node.get_parent()
+	print(oldParent.name, " => ", parent.name, ": ", node.name)
+	oldParent.remove_child(node)
+	parent.add_child(node)
+	setOwner(scene, node)
 
 func post_import(scene):
 	var main = scene.get_node("main")
