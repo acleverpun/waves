@@ -18,6 +18,10 @@ config/icon="res://assets/icons/icon.png"
 
 size/borderless=false
 
+[autoload]
+
+targetController="*res://src/controllers/targetController.tscn"
+
 [display]
 
 window/size/height=768

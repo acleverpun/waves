@@ -19,3 +19,57 @@ editor/display_folded = false
 [node name="player" parent="main" index="0" instance=ExtResource( 3 )]
 position = Vector2( 1872, 1072 )
 
+[node name="staticBody2D" parent="main" index="1"]
+editor/display_folded = true
+
+[node name="ui" type="CanvasLayer" parent="." index="7"]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="targetBg" type="ColorRect" parent="ui" index="0"]
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -48.0
+margin_top = 32.0
+margin_right = 48.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.247059, 0.247059, 0.247059, 1 )
+
+[node name="target" type="RichTextLabel" parent="ui/targetBg" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -8.0
+margin_right = 48.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+

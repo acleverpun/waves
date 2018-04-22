@@ -6,10 +6,16 @@ import
   node,
   viewport
 
+import
+  ../controllers/target_controller as _
+
 gdobj Selectable of Node:
+  var parent: Node
+
   method ready() =
-    discard getParent().connect("input_event", self, "on_input_event", newArray())
+    parent = getParent()
+    discard parent.connect("input_event", self, "on_input_event", newArray())
 
   proc onInputEvent(viewport: Viewport, event: InputEvent, shapeIndex: int) {.gdExport.} =
     if event of InputEventMouseButton and (event as InputEventMouseButton).pressed:
-      print "select"
+      (getNode("/root/targetController") as TargetController).target(parent)
