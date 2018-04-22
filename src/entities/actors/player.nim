@@ -11,6 +11,9 @@ import
   sprite,
   viewport
 
+import
+  controllers/target_controller as _
+
 const zoomMax = 1
 const zoomMin = 0.2
 const zoomStep = vec2(0.1, 0.1)
@@ -23,6 +26,9 @@ gdobj Player of KinematicBody2d:
   var animTween = 0.2
   var animSpeed = 1.0
 
+  var target: Node
+
+  var targetController: TargetController
   var viewport: Viewport
   var sprite: Sprite
   var model: Spatial
@@ -31,6 +37,8 @@ gdobj Player of KinematicBody2d:
   var cam: Camera2d
 
   method ready() =
+    targetController = getNode("/root/targetController") as TargetController
+
     viewport = getNode("viewport") as Viewport
     sprite = getNode("sprite") as Sprite
     model = viewport.getNode("model") as Spatial
@@ -86,6 +94,10 @@ gdobj Player of KinematicBody2d:
       zoom(-1)
     if input.isActionPressed("cam_zoom_out") and cam.zoom.x < zoomMax:
       zoom(1)
+    if input.isActionJustPressed("interact"):
+      target = targetController.target
+    if input.isActionJustPressed("target_clear"):
+      targetController.clearTarget()
 
   method zoom(scalar: float = 0) {.base.} =
     cam.zoom = cam.zoom + scalar * zoomStep
