@@ -22,6 +22,8 @@ gdobj Player of KinematicBody2d:
   var speed* = 5000.0
   var runModifier* = 4.0
 
+  var autorun = false
+  var dir: Vector2
   var anim: string
   var animTween = 0.2
   var animSpeed = 1.0
@@ -60,6 +62,8 @@ gdobj Player of KinematicBody2d:
     var currentAnim = anim
     var currentAnimSpeed = animSpeed
 
+    if input.isActionJustPressed("move.autorun"): autorun = not autorun
+
     # cardinals
     if input.isActionPressed("move.up"):
       move += UP
@@ -69,6 +73,13 @@ gdobj Player of KinematicBody2d:
       move += LEFT
     if input.isActionPressed("move.right"):
       move += RIGHT
+
+    if move != ZERO:
+      autorun = false
+      target = nil
+
+    if autorun:
+      move = dir
 
     if target != nil:
       let toTarget = target.position - self.position
@@ -90,7 +101,8 @@ gdobj Player of KinematicBody2d:
       currentAnim = "Walk"
       pivot.rotation = move.angle
       model.rotation = vec3(0, move.angle - PI/2, 0)
-      discard moveAndSlide(move.normalized * currentSpeed * dt)
+      dir = move.normalized
+      discard moveAndSlide(dir * currentSpeed * dt)
 
     if currentAnim != anim or input.isActionJustPressed("move.run") or input.isActionJustReleased("move.run"):
       anim = currentAnim
