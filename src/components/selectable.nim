@@ -3,18 +3,18 @@ include globals
 import
   input_event,
   input_event_mouse_button,
-  node,
+  node_2d,
   viewport
 
 import
   controllers/target_controller as _
 
-gdobj Selectable of Node:
-  var parent: Node
+gdobj Selectable of Node2d:
+  var parent: Node2d
   var targetController: TargetController
 
   method ready() =
-    parent = getParent()
+    parent = getParent() as Node2d
     targetController = getNode("/root/targetController") as TargetController
     discard parent.connect("input_event", self, "on_input_event", newArray())
 

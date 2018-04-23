@@ -26,7 +26,7 @@ gdobj Player of KinematicBody2d:
   var animTween = 0.2
   var animSpeed = 1.0
 
-  var target: Node
+  var target: Node2d
 
   var targetController: TargetController
   var viewport: Viewport
@@ -69,6 +69,13 @@ gdobj Player of KinematicBody2d:
       move += LEFT
     if input.isActionPressed("move_right"):
       move += RIGHT
+
+    if target != nil:
+      let toTarget = target.position - self.position
+      if toTarget.length >= 1:
+        move = toTarget
+      else:
+        target = nil
 
     if move == ZERO:
       currentAnim = "Idle"

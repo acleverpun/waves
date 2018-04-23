@@ -2,10 +2,11 @@ include globals
 
 import
   node,
+  node_2d,
   rich_text_label
 
 gdobj TargetController of Node:
-  var target* {.gdExport, hint: NodePathToEditedNode.}: Node
+  var target* {.gdExport, hint: NodePathToEditedNode.}: Node2d
 
   var ui: Node
   var targetText: RichTextLabel
@@ -14,7 +15,7 @@ gdobj TargetController of Node:
     ui = getNode("../area/ui")
     targetText = ui.findNode("target") as RichTextLabel
 
-  proc setTarget*(node: Node) =
+  proc setTarget*(node: Node2d) =
     target = node
     targetText.text = target.name
 
