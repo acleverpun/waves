@@ -61,13 +61,13 @@ gdobj Player of KinematicBody2d:
     var currentAnimSpeed = animSpeed
 
     # cardinals
-    if input.isActionPressed("move_up"):
+    if input.isActionPressed("move.up"):
       move += UP
-    if input.isActionPressed("move_down"):
+    if input.isActionPressed("move.down"):
       move += DOWN
-    if input.isActionPressed("move_left"):
+    if input.isActionPressed("move.left"):
       move += LEFT
-    if input.isActionPressed("move_right"):
+    if input.isActionPressed("move.right"):
       move += RIGHT
 
     if target != nil:
@@ -81,7 +81,7 @@ gdobj Player of KinematicBody2d:
       currentAnim = "Idle"
     else:
       var camScalar = 256.0
-      if input.isActionPressed("move_run"):
+      if input.isActionPressed("move.run"):
         currentSpeed *= runModifier
         currentAnimSpeed *= runModifier
         camScalar *= 2
@@ -92,18 +92,18 @@ gdobj Player of KinematicBody2d:
       model.rotation = vec3(0, move.angle - PI/2, 0)
       discard moveAndSlide(move.normalized * currentSpeed * dt)
 
-    if currentAnim != anim or input.isActionJustPressed("move_run") or input.isActionJustReleased("move_run"):
+    if currentAnim != anim or input.isActionJustPressed("move.run") or input.isActionJustReleased("move.run"):
       anim = currentAnim
       animPlayer.play(currentAnim, animTween, currentAnimSpeed)
 
   method input(event: InputEvent) =
-    if input.isActionPressed("cam_zoom_in") and cam.zoom.x > zoomMin:
+    if input.isActionPressed("cam.zoom-in") and cam.zoom.x > zoomMin:
       zoom(-1)
-    if input.isActionPressed("cam_zoom_out") and cam.zoom.x < zoomMax:
+    if input.isActionPressed("cam.zoom-out") and cam.zoom.x < zoomMax:
       zoom(1)
     if input.isActionJustPressed("interact"):
       target = targetController.target
-    if input.isActionJustPressed("target_clear"):
+    if input.isActionJustPressed("target.clear"):
       targetController.clearTarget()
 
   method zoom(scalar: float = 0) {.base.} =
