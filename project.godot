@@ -37,7 +37,7 @@ vnen.tiled_importer={
 "embed_internal_images": false,
 "image_flags": 0,
 "post_import_script": "res://src/utils/tiled.gd",
-"save_tiled_properties": false,
+"save_tiled_properties": true,
 "tile_metadata": false,
 "uv_clip": true
 }

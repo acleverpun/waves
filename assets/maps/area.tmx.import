@@ -16,5 +16,5 @@ tile_metadata=false
 uv_clip=true
 image_flags=0
 embed_internal_images=false
-save_tiled_properties=false
+save_tiled_properties=true
 post_import_script="res://src/utils/tiled.gd"

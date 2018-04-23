@@ -184,7 +184,7 @@
   </data>
  </layer>
  <objectgroup name="objects">
-  <object id="2" gid="20" x="1872" y="960" width="16" height="16">
+  <object id="2" name="sign" gid="20" x="1872" y="960" width="16" height="16">
    <properties>
     <property name="selectable" type="bool" value="false"/>
    </properties>
