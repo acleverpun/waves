@@ -20,6 +20,7 @@ size/borderless=false
 
 [autoload]
 
+debug="*res://src/controllers/debugController.tscn"
 targetController="*res://src/controllers/targetController.tscn"
 
 [display]
