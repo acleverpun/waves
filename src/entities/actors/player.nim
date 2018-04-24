@@ -22,11 +22,11 @@ gdobj Player of KinematicBody2d:
   var speed* = 5000.0
   var runModifier* = 4.0
 
-  var autorun = false
-  var dir: Vector2
   var anim: string
-  var animTween = 0.2
   var animSpeed = 1.0
+  var animTween = 0.2
+  var autorun = false
+  var autorunDir: Vector2
 
   var target: Node2d
 
@@ -62,6 +62,7 @@ gdobj Player of KinematicBody2d:
     var currentAnim = anim
     var currentAnimSpeed = animSpeed
 
+    let strafing = input.isActionPressed("move.strafe")
     if input.isActionJustPressed("move.autorun"): autorun = not autorun
 
     # cardinals
@@ -73,18 +74,21 @@ gdobj Player of KinematicBody2d:
       move += LEFT
     if input.isActionPressed("move.right"):
       move += RIGHT
+    move = move.normalized
 
-    if move != ZERO:
+    if move != ZERO and not strafing:
       autorun = false
       target = nil
 
     if autorun:
-      move = dir
+      if input.isActionJustPressed("move.autorun"):
+        autorunDir = vec2(cos(pivot.rotation), sin(pivot.rotation))
+      move += autorunDir
 
     if target != nil:
       let toTarget = target.position - self.position
       if toTarget.length >= 1:
-        move = toTarget
+        move += toTarget.normalized
       else:
         target = nil
 
@@ -92,19 +96,19 @@ gdobj Player of KinematicBody2d:
       currentAnim = "Idle"
     else:
       var camScalar = 256.0
-      if input.isActionPressed("move.run"):
+      if input.isActionPressed("move.sprint"):
         currentSpeed *= runModifier
         currentAnimSpeed *= runModifier
         camScalar *= 2
       camOffset.position = vec2(camScalar * cam.zoom.x, 0)
 
       currentAnim = "Walk"
-      pivot.rotation = move.angle
-      model.rotation = vec3(0, move.angle - PI/2, 0)
-      dir = move.normalized
-      discard moveAndSlide(dir * currentSpeed * dt)
+      if not strafing:
+        pivot.rotation = move.angle
+        model.rotation = vec3(0, move.angle - PI/2, 0)
+      discard moveAndSlide(move.normalized * currentSpeed * dt)
 
-    if currentAnim != anim or input.isActionJustPressed("move.run") or input.isActionJustReleased("move.run"):
+    if currentAnim != anim or input.isActionJustPressed("move.sprint") or input.isActionJustReleased("move.sprint"):
       anim = currentAnim
       animPlayer.play(currentAnim, animTween, currentAnimSpeed)
 
