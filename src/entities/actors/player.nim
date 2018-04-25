@@ -28,7 +28,7 @@ gdobj Player of KinematicBody2d:
   var autorun = false
   var autorunDir: Vector2
 
-  var target: Node2d
+  var target: Target
 
   var targetController: TargetController
   var viewport: Viewport
