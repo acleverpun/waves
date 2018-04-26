@@ -19,7 +19,7 @@ const zoomMin = 0.2
 const zoomStep = vec2(0.1, 0.1)
 
 gdobj Player of KinematicBody2d:
-  var speed* = 5000.0
+  var speed* = 100.0
   var runModifier* = 4.0
 
   var anim: string
@@ -27,6 +27,7 @@ gdobj Player of KinematicBody2d:
   var animTween = 0.2
   var autorun = false
   var autorunDir: Vector2
+  var velocity: Vector2
 
   var target: Target
 
@@ -57,7 +58,8 @@ gdobj Player of KinematicBody2d:
     zoom()
 
   method physicsProcess(dt: float) =
-    var move: Vector2
+    velocity = vec2(0, 0)
+
     var currentSpeed = speed
     var currentAnim = anim
     var currentAnimSpeed = animSpeed
@@ -67,32 +69,32 @@ gdobj Player of KinematicBody2d:
 
     # cardinals
     if input.isActionPressed("move.up"):
-      move += UP
+      velocity += UP
     if input.isActionPressed("move.down"):
-      move += DOWN
+      velocity += DOWN
     if input.isActionPressed("move.left"):
-      move += LEFT
+      velocity += LEFT
     if input.isActionPressed("move.right"):
-      move += RIGHT
-    move = move.normalized
+      velocity += RIGHT
+    velocity = velocity.normalized
 
-    if move != ZERO and not strafing:
+    if velocity != ZERO and not strafing:
       autorun = false
       target = nil
 
     if autorun:
       if input.isActionJustPressed("move.autorun"):
         autorunDir = vec2(cos(pivot.rotation), sin(pivot.rotation))
-      move += autorunDir
+      velocity += autorunDir
 
     if target != nil:
       let toTarget = target.position - self.position
       if toTarget.length >= 1:
-        move += toTarget.normalized
+        velocity += toTarget.normalized
       else:
         target = nil
 
-    if move == ZERO:
+    if velocity == ZERO:
       currentAnim = "Idle"
     else:
       var camScalar = 256.0
@@ -104,9 +106,9 @@ gdobj Player of KinematicBody2d:
 
       currentAnim = "Walk"
       if not strafing:
-        pivot.rotation = move.angle
-        model.rotation = vec3(0, move.angle - PI/2, 0)
-      discard moveAndSlide(move.normalized * currentSpeed * dt)
+        pivot.rotation = velocity.angle
+        model.rotation = vec3(0, velocity.angle - PI/2, 0)
+      velocity = moveAndSlide(velocity.normalized * currentSpeed)
 
     if currentAnim != anim or input.isActionJustPressed("move.sprint") or input.isActionJustReleased("move.sprint"):
       anim = currentAnim
