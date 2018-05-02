@@ -6,6 +6,7 @@ import
   camera_2d,
   input,
   kinematic_body_2d,
+  kinematic_collision_2d,
   math,
   spatial,
   sprite,
@@ -109,6 +110,11 @@ gdobj Player of KinematicBody2d:
         pivot.rotation = velocity.angle
         model.rotation = vec3(0, velocity.angle - PI/2, 0)
       velocity = moveAndSlide(velocity.normalized * currentSpeed)
+
+      if target != nil:
+        let numCollisions = getSlideCount()
+        for index in 0 ..< numCollisions:
+          print getSlideCollision(index).colliderId == target.id
 
     if currentAnim != anim or input.isActionJustPressed("move.sprint") or input.isActionJustReleased("move.sprint"):
       anim = currentAnim

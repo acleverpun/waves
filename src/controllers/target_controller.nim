@@ -7,8 +7,9 @@ import
   rich_text_label
 
 type Target* = ref object
+  id*: int64
   node*: Node2d
-  collision*: CollisionShape2d
+  collision: CollisionShape2d
   position*: Vector2
 
 proc findCollision(node: Node2d): CollisionShape2d =
@@ -19,6 +20,7 @@ proc newTarget*(node: Node2d): Target =
   let collision = findCollision(node)
 
   Target(
+    id: node.getInstanceId(),
     node: node,
     collision: collision,
     position: node.position + collision.position,

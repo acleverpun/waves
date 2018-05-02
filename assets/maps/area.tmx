@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="256" height="128" tilewidth="16" tileheight="16" infinite="0" nextobjectid="4">
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="256" height="128" tilewidth="16" tileheight="16" infinite="0" nextobjectid="5">
  <tileset firstgid="1" name="roguelikeSheet" tilewidth="16" tileheight="16" spacing="1" tilecount="1767" columns="57">
   <image source="../tiles/roguelikeSheet.png" width="968" height="526"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="2">
+   <objectgroup draworder="index">
+    <object id="3" x="3" y="4" width="13" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="3">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="4" width="16" height="12"/>
+   </objectgroup>
+  </tile>
+  <tile id="4">
+   <objectgroup draworder="index">
+    <object id="2" x="0" y="4" width="13" height="12"/>
+   </objectgroup>
+  </tile>
   <tile id="19">
    <objectgroup draworder="index">
     <object id="1" x="1" y="9" width="14" height="7"/>
@@ -15,6 +35,121 @@
   <tile id="21">
    <objectgroup draworder="index">
     <object id="1" x="2" y="9" width="10" height="7"/>
+   </objectgroup>
+  </tile>
+  <tile id="57">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="58">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="59">
+   <objectgroup draworder="index">
+    <object id="1" x="3" y="0" width="13" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="60">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="61">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="13" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="114">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="115">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="116">
+   <objectgroup draworder="index">
+    <object id="2" x="3" y="0" width="13" height="13"/>
+   </objectgroup>
+  </tile>
+  <tile id="117">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="13"/>
+   </objectgroup>
+  </tile>
+  <tile id="118">
+   <objectgroup draworder="index">
+    <object id="2" x="0" y="0" width="13" height="13"/>
+   </objectgroup>
+  </tile>
+  <tile id="171">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="172">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="173">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="174">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="175">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="228">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="229">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="230">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="231">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="232">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="287">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="288">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="289">
+   <objectgroup draworder="index">
+    <object id="1" x="0" y="0" width="16" height="16"/>
    </objectgroup>
   </tile>
   <tile id="550">
@@ -160,7 +295,7 @@
  </tileset>
  <layer name="ground" width="256" height="128">
   <data encoding="base64" compression="zlib">
-   eJzt1DEBADAMwKBetTX/riYjRzmwwM7MAic94Kz6H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0Cn/gfo1P8AnfofoFP/A3Tqf4BO/Q/Qqf8BOvU/QKf+B+jU/wCd+h+gU/8DdOp/gE79D9Cp/wE69T9Ap/4H6NT/AJ36H6BT/wN06n+ATv0P0Kn/ATr1P0DnA6WrQQA=
+   eJzt20FK5GAURtECWxdliy5K7d6+EXHirJ4PbpWewRkG/gxyPwLJ3el0ugN+pSfg16r7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj9Ap+4P0Kn7A3Tq/gCduj/M3BxuL+AcXLe6P8w8HB4v4Bxct7o/zHw+//U5uG51f5ix/2yo+8OM/WdD3R9m7D8b6v4wY//ZUPeHGfvPhro/zNh/NtT9Ycb+s6HuDzP2nw11f5ix/2yo+8OH9+/5/5zh5fB85jX+F+Cruj98eD38O8Pfw/2Z1/y/gPvkstT9Ycb7Pxvq/jDj/Z8NdX+Ysf9sqPvDjP1nQ90fZuw/G+r+MGP/2VD3hxn7z4a6P8zYfzbU/WHG/rOh7g8z9p8NdX+Ysf9sqPvDzPv/Ar7n57vq/jBrdn0Gfoa6P0Cn7g/QqfsDdOr+AJ26P0Cn7g/QqfsDdOr+AJ26P0Cn7g/QqfsDdOr+AJ26P0Cn7g/QqfsDdOr+AJ26P0DnDcFBS/s=
   </data>
  </layer>
  <layer name="on-ground" width="256" height="128">
@@ -186,7 +321,12 @@
  <objectgroup name="objects">
   <object id="2" name="sign" gid="20" x="1872" y="960" width="16" height="16">
    <properties>
-    <property name="selectable" type="bool" value="false"/>
+    <property name="selectable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="4" name="anotherSign" gid="22" x="1792" y="1184" width="16" height="16">
+   <properties>
+    <property name="selectable" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
