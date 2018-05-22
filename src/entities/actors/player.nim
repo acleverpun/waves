@@ -12,9 +12,6 @@ import
   sprite,
   viewport
 
-import
-  controllers/target_controller as _
-
 const zoomMax = 1
 const zoomMin = 0.2
 const zoomStep = vec2(0.1, 0.1)
@@ -30,9 +27,6 @@ gdobj Player of KinematicBody2d:
   var autorunDir: Vector2
   var velocity: Vector2
 
-  var target: Target
-
-  var targetController: TargetController
   var viewport: Viewport
   var sprite: Sprite
   var model: Spatial
@@ -41,8 +35,6 @@ gdobj Player of KinematicBody2d:
   var cam: Camera2d
 
   method ready() =
-    targetController = getNode("/root/targetController") as TargetController
-
     viewport = getNode("viewport") as Viewport
     sprite = getNode("sprite") as Sprite
     model = viewport.getNode("model") as Spatial
@@ -81,19 +73,11 @@ gdobj Player of KinematicBody2d:
 
     if velocity != ZERO and not strafing:
       autorun = false
-      target = nil
 
     if autorun:
       if input.isActionJustPressed("move.autorun"):
         autorunDir = vec2(cos(pivot.rotation), sin(pivot.rotation))
       velocity += autorunDir
-
-    if target != nil:
-      let toTarget = target.position - self.position
-      if toTarget.length >= 1:
-        velocity += toTarget.normalized
-      else:
-        target = nil
 
     if velocity == ZERO:
       currentAnim = "Idle"
@@ -111,11 +95,6 @@ gdobj Player of KinematicBody2d:
         model.rotation = vec3(0, velocity.angle - PI/2, 0)
       velocity = moveAndSlide(velocity.normalized * currentSpeed)
 
-      if target != nil:
-        let numCollisions = getSlideCount()
-        for index in 0 ..< numCollisions:
-          print getSlideCollision(index).colliderId == target.id
-
     if currentAnim != anim or input.isActionJustPressed("move.sprint") or input.isActionJustReleased("move.sprint"):
       anim = currentAnim
       animPlayer.play(currentAnim, animTween, currentAnimSpeed)
@@ -126,9 +105,7 @@ gdobj Player of KinematicBody2d:
     if input.isActionPressed("cam.zoom-out") and cam.zoom.x < zoomMax:
       zoom(1)
     if input.isActionJustPressed("interact"):
-      target = targetController.target
-    if input.isActionJustPressed("target.clear"):
-      targetController.clearTarget()
+      discard
 
   method zoom(scalar: float = 0) {.base.} =
     cam.zoom = cam.zoom + scalar * zoomStep
