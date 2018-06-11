@@ -80,8 +80,10 @@ texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
+skeleton = NodePath("")
 invert_enable = false
 invert_border = 100.0
+bones = [  ]
 
 [node name="sprite" type="Sprite" parent="." index="2"]
 rotation = 3.14159
@@ -95,6 +97,7 @@ transparent_bg = true
 msaa = 0
 hdr = true
 disable_3d = false
+keep_3d_linear = false
 usage = 2
 debug_draw = 0
 render_target_v_flip = false

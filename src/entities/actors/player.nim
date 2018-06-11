@@ -23,8 +23,6 @@ gdobj Player of KinematicBody2d:
   var anim: string
   var animSpeed = 1.0
   var animTween = 0.2
-  var autorun = false
-  var autorunDir: Vector2
   var velocity: Vector2
 
   var viewport: Viewport
@@ -51,14 +49,11 @@ gdobj Player of KinematicBody2d:
     zoom()
 
   method physicsProcess(dt: float) =
-    velocity = vec2(0, 0)
+    velocity = ZERO
 
     var currentSpeed = speed
     var currentAnim = anim
     var currentAnimSpeed = animSpeed
-
-    let strafing = input.isActionPressed("move.strafe")
-    if input.isActionJustPressed("move.autorun"): autorun = not autorun
 
     # cardinals
     if input.isActionPressed("move.up"):
@@ -71,18 +66,10 @@ gdobj Player of KinematicBody2d:
       velocity += RIGHT
     velocity = velocity.normalized
 
-    if velocity != ZERO and not strafing:
-      autorun = false
-
-    if autorun:
-      if input.isActionJustPressed("move.autorun"):
-        autorunDir = vec2(cos(pivot.rotation), sin(pivot.rotation))
-      velocity += autorunDir
-
     if velocity == ZERO:
       currentAnim = "Idle"
     else:
-      var camScalar = 256.0
+      var camScalar = 128.0
       if input.isActionPressed("move.sprint"):
         currentSpeed *= runModifier
         currentAnimSpeed *= runModifier
@@ -90,10 +77,10 @@ gdobj Player of KinematicBody2d:
       camOffset.position = vec2(camScalar * cam.zoom.x, 0)
 
       currentAnim = "Walk"
-      if not strafing:
-        pivot.rotation = velocity.angle
-        model.rotation = vec3(0, velocity.angle - PI/2, 0)
-      velocity = moveAndSlide(velocity.normalized * currentSpeed)
+      pivot.rotation = velocity.angle
+      model.rotation = vec3(0, velocity.angle - PI/2, 0)
+      if not input.isActionPressed("move.halt"):
+        velocity = moveAndSlide(velocity.normalized * currentSpeed)
 
     if currentAnim != anim or input.isActionJustPressed("move.sprint") or input.isActionJustReleased("move.sprint"):
       anim = currentAnim
