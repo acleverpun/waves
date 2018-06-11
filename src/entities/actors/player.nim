@@ -18,7 +18,8 @@ const zoomStep = vec2(0.1, 0.1)
 
 gdobj Player of KinematicBody2d:
   var speed* = 100.0
-  var runModifier* = 4.0
+  var runMod* = 2.0
+  var camDistance* = 128.0
 
   var anim: string
   var animSpeed = 1.0
@@ -51,9 +52,8 @@ gdobj Player of KinematicBody2d:
   method physicsProcess(dt: float) =
     velocity = ZERO
 
-    var currentSpeed = speed
+    var speedMod = 1.0
     var currentAnim = anim
-    var currentAnimSpeed = animSpeed
 
     # cardinals
     if input.isActionPressed("move.up"):
@@ -69,22 +69,19 @@ gdobj Player of KinematicBody2d:
     if velocity == ZERO:
       currentAnim = "Idle"
     else:
-      var camScalar = 128.0
       if input.isActionPressed("move.sprint"):
-        currentSpeed *= runModifier
-        currentAnimSpeed *= runModifier
-        camScalar *= 2
-      camOffset.position = vec2(camScalar * cam.zoom.x, 0)
+        speedMod = runMod
+      camOffset.position = vec2(camDistance * speedMod * cam.zoom.x, 0)
 
       currentAnim = "Walk"
       pivot.rotation = velocity.angle
       model.rotation = vec3(0, velocity.angle - PI/2, 0)
       if not input.isActionPressed("move.halt"):
-        velocity = moveAndSlide(velocity.normalized * currentSpeed)
+        velocity = moveAndSlide(velocity.normalized * speed * speedMod)
 
     if currentAnim != anim or input.isActionJustPressed("move.sprint") or input.isActionJustReleased("move.sprint"):
       anim = currentAnim
-      animPlayer.play(currentAnim, animTween, currentAnimSpeed)
+      animPlayer.play(currentAnim, animTween, animSpeed * speedMod)
 
   method input(event: InputEvent) =
     if input.isActionPressed("cam.zoom-in") and cam.zoom.x > zoomMin:
