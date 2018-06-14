@@ -20,6 +20,7 @@ gdobj Player of KinematicBody2d:
   var speed* = 100.0
   var runMod* = 2.0
   var camDistance* = 128.0
+  var deadzone* = 0.3
 
   var anim: string
   var animSpeed = 1.0
@@ -54,6 +55,12 @@ gdobj Player of KinematicBody2d:
 
     var speedMod = 1.0
     var currentAnim = anim
+    var isGamepad = false
+
+    if input.isJoyKnown(0):
+      velocity = vec2(input.getJoyAxis(0, 0), input.getJoyAxis(0, 1))
+      if velocity.length >= deadzone: isGamepad = true
+      else: velocity = ZERO
 
     # cardinals
     if input.isActionPressed("move.up"):
