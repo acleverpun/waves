@@ -71,7 +71,8 @@ gdobj Player of KinematicBody2d:
       velocity += LEFT
     if input.isActionPressed("move.right"):
       velocity += RIGHT
-    velocity = velocity.normalized
+
+    velocity = velocity.clamped(1)
 
     if velocity == ZERO:
       currentAnim = "Idle"
@@ -84,7 +85,7 @@ gdobj Player of KinematicBody2d:
       pivot.rotation = velocity.angle
       model.rotation = vec3(0, velocity.angle - PI/2, 0)
       if not input.isActionPressed("move.halt"):
-        velocity = moveAndSlide(velocity.normalized * speed * speedMod)
+        velocity = moveAndSlide(velocity * speed * speedMod)
 
     if currentAnim != anim or input.isActionJustPressed("move.sprint") or input.isActionJustReleased("move.sprint"):
       anim = currentAnim
