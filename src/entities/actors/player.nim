@@ -50,7 +50,19 @@ gdobj Player of KinematicBody2d:
 
     zoom()
 
+  method input(event: InputEvent) =
+    if input.isActionPressed("cam.zoom-in") and cam.zoom.x > zoomMin:
+      zoom(-1)
+    if input.isActionPressed("cam.zoom-out") and cam.zoom.x < zoomMax:
+      zoom(1)
+    if input.isActionJustPressed("interact"):
+      discard
+
   method physicsProcess(dt: float) =
+    movement(dt)
+    actions(dt)
+
+  method movement(dt: float) {.base.} =
     velocity = ZERO
 
     var speedMod = 1.0
@@ -91,13 +103,9 @@ gdobj Player of KinematicBody2d:
       anim = currentAnim
       animPlayer.play(currentAnim, animTween, animSpeed * speedMod)
 
-  method input(event: InputEvent) =
-    if input.isActionPressed("cam.zoom-in") and cam.zoom.x > zoomMin:
-      zoom(-1)
-    if input.isActionPressed("cam.zoom-out") and cam.zoom.x < zoomMax:
-      zoom(1)
-    if input.isActionJustPressed("interact"):
-      discard
+  method actions(dt: float) {.base.} =
+    if input.isActionPressed("action.1"):
+      print true
 
   method zoom(scalar: float = 0) {.base.} =
     cam.zoom = cam.zoom + scalar * zoomStep
