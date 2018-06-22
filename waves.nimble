@@ -5,12 +5,15 @@ license = "MIT"
 
 srcDir = "src"
 skipDirs = @[
+  "components",
+  "controllers",
   "entities",
   "scenes",
   "utils",
 ]
 skipFiles = @[
-  "global.nim",
+  "debug.nim",
+  "globals.nim",
 ]
 
 requires "godot >= 0.7.8 & < 0.8.0"
