@@ -12,6 +12,9 @@ import
   sprite,
   viewport
 
+import
+  types.action
+
 const zoomMax = 1
 const zoomMin = 0.2
 const zoomStep = vec2(0.1, 0.1)
@@ -33,6 +36,8 @@ gdobj Player of KinematicBody2d:
   var animPlayer: AnimationPlayer
   var pivot, camOffset: Node2d
   var cam: Camera2d
+
+  var slot: Action[Player] = newAction(self)
 
   method ready() =
     viewport = getNode("viewport") as Viewport
@@ -104,8 +109,8 @@ gdobj Player of KinematicBody2d:
       animPlayer.play(currentAnim, animTween, animSpeed * speedMod)
 
   method actions(dt: float) {.base.} =
-    if input.isActionPressed("action.1"):
-      print true
+    if input.isActionJustPressed("action.1"):
+      slot.activate()
 
   method zoom(scalar: float = 0) {.base.} =
     cam.zoom = cam.zoom + scalar * zoomStep

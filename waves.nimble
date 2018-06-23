@@ -5,6 +5,7 @@ license = "MIT"
 
 srcDir = "src"
 skipDirs = @[
+  "classes",
   "components",
   "controllers",
   "entities",
