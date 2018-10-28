@@ -18,4 +18,5 @@ editor/display_folded = false
 
 [node name="player" parent="main" index="0" instance=ExtResource( 3 )]
 position = Vector2( 1872, 1072 )
+motion/sync_to_physics = false
 

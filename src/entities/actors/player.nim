@@ -20,10 +20,10 @@ const zoomMin = 0.2
 const zoomStep = vec2(0.1, 0.1)
 
 gdobj Player of KinematicBody2d:
-  var speed* = 100.0
-  var runMod* = 2.0
-  var camDistance* = 128.0
-  var deadzone* = 0.3
+  var speed = 100.0
+  var runMod = 2.0
+  var camDistance = 128.0
+  var deadzone = 0.3
 
   var anim: string
   var animSpeed = 1.0
