@@ -23,10 +23,6 @@ config/icon="res://assets/icons/icon.png"
 
 size/borderless=false
 
-[autoload]
-
-debug="*res://src/controllers/debugController.tscn"
-
 [display]
 
 window/size/height=768
@@ -251,3 +247,7 @@ name_casing=1
 
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+
+[tiled_importer]
+
+enable_json_format=true

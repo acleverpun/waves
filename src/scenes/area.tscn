@@ -5,7 +5,6 @@
 [ext_resource path="res://src/entities/actors/player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="NativeScript" id=1]
-
 resource_name = "World"
 class_name = "Area"
 library = ExtResource( 2 )
@@ -18,5 +17,4 @@ editor/display_folded = false
 
 [node name="player" parent="main" index="0" instance=ExtResource( 3 )]
 position = Vector2( 1872, 1072 )
-motion/sync_to_physics = false
 
