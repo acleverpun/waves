@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Waves"
+run/main_scene="res://src/states/main.tscn"
 config/icon="res://assets/icons/icon.png"
 
 [display]
