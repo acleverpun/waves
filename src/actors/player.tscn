@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/actors/player.gd" type="Script" id=1]
+[ext_resource path="res://src/components/mover.tscn" type="PackedScene" id=2]
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -11,3 +12,5 @@ polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
 [node name="polygon2D" type="Polygon2D" parent="."]
 color = Color( 0.4, 0.313726, 0.698039, 1 )
 polygon = PoolVector2Array( -16, -16, 16, -16, 16, 16, -16, 16 )
+
+[node name="mover" parent="." instance=ExtResource( 2 )]
