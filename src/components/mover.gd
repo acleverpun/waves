@@ -6,7 +6,7 @@ const DOWN = Vector2(0, 1)
 const LEFT = Vector2(-1, 0)
 const RIGHT = Vector2(1, 0)
 
-export var speed = 100.0
+export var speed = 50.0
 
 onready var parent = get_parent()
 
