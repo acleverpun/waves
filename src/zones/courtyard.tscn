@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/tilesets/roguelike.tres" type="TileSet" id=1]
 [ext_resource path="res://src/actors/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/spritesheets/roguelike.png" type="Texture" id=3]
 
-[node name="zone" type="Node2D"]
+[node name="zone" type="YSort"]
 
 [node name="ground" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -15,7 +16,28 @@ tile_data = PoolIntArray( 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 786466, 9, 2, 851994, 2, 131074, 851995, 2, 131075, 851996, 2, 131075, 851997, 2, 131075, 851998, 2, 131075, 851999, 2, 131076, 917530, 2, 196610, 917531, 2, 196611, 917532, 2, 196611, 917533, 2, 196611, 917534, 2, 196611, 917535, 2, 196612, 983066, 2, 196610, 983067, 2, 196611, 983068, 2, 196611, 983069, 2, 196611, 983070, 2, 196611, 983071, 2, 196612, 1048602, 2, 196610, 1048603, 2, 196611, 1048604, 2, 196611, 1048605, 2, 196611, 1048606, 2, 196611, 1048607, 2, 196612, 1114138, 2, 196610, 1114139, 2, 196611, 1114140, 2, 196611, 1114141, 2, 196611, 1114142, 2, 196611, 1114143, 2, 196612, 1179674, 2, 262146, 1179675, 2, 262147, 1179676, 2, 262147, 1179677, 2, 262147, 1179678, 2, 262147, 1179679, 2, 262148 )
+tile_data = PoolIntArray( 851994, 2, 131074, 851995, 2, 131075, 851996, 2, 131075, 851997, 2, 131075, 851998, 2, 131075, 851999, 2, 131076, 917530, 2, 196610, 917531, 2, 196611, 917532, 2, 196611, 917533, 2, 196611, 917534, 2, 196611, 917535, 2, 196612, 983066, 2, 196610, 983067, 2, 196611, 983068, 2, 196611, 983069, 2, 196611, 983070, 2, 196611, 983071, 2, 196612, 1048602, 2, 196610, 1048603, 2, 196611, 1048604, 2, 196611, 1048605, 2, 196611, 1048606, 2, 196611, 1048607, 2, 196612, 1114138, 2, 196610, 1114139, 2, 196611, 1114140, 2, 196611, 1114141, 2, 196611, 1114142, 2, 196611, 1114143, 2, 196612, 1179674, 2, 262146, 1179675, 2, 262147, 1179676, 2, 262147, 1179677, 2, 262147, 1179678, 2, 262147, 1179679, 2, 262148 )
 
-[node name="player" parent="." instance=ExtResource( 2 )]
+[node name="objects" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( 786465, 9, 2 )
+
+[node name="player" parent="objects" instance=ExtResource( 2 )]
 position = Vector2( 464, 256 )
+
+[node name="sign" type="Sprite" parent="objects"]
+position = Vector2( 456, 202 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 323, 0, 16, 16 )
+
+[node name="body" type="StaticBody2D" parent="objects/sign"]
+position = Vector2( -416, -208 )
+
+[node name="collision" type="CollisionPolygon2D" parent="objects/sign/body"]
+position = Vector2( 416, 208 )
+polygon = PoolVector2Array( 7, 16, 7, 11, 4, 11, 4, 7, 12, 7, 12, 11, 9, 11, 9, 16 )
