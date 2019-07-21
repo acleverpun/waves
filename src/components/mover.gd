@@ -18,13 +18,13 @@ func _physics_process(dt):
 func movement(dt):
 	velocity = ZERO
 
-	if Input.is_action_pressed('move.up'):
+	if Input.is_action_pressed("move.up"):
 		velocity += UP
-	if Input.is_action_pressed('move.down'):
+	if Input.is_action_pressed("move.down"):
 		velocity += DOWN
-	if Input.is_action_pressed('move.left'):
+	if Input.is_action_pressed("move.left"):
 		velocity += LEFT
-	if Input.is_action_pressed('move.right'):
+	if Input.is_action_pressed("move.right"):
 		velocity += RIGHT
 
 	velocity = velocity.clamped(1)

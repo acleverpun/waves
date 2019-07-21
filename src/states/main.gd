@@ -1,6 +1,6 @@
 extends Node
 
-onready var Zone = preload('res://src/zones/courtyard.tscn')
+onready var Zone = preload("res://src/zones/courtyard.tscn")
 
 func _ready():
 	var zone = Zone.instance()
@@ -8,4 +8,4 @@ func _ready():
 	add_child(zone)
 
 func _input(event):
-	if Input.is_action_pressed('game.close'): get_tree().quit()
+	if Input.is_action_pressed("game.close"): get_tree().quit()
