@@ -4,8 +4,8 @@ const zoomMax = Vector2(1.0, 1.0)
 const zoomMin = Vector2(0.1, 0.1)
 const zoomStep = Vector2(0.1, 0.1)
 
-onready var parent = get_parent()
-onready var cam = parent.find_node("cam")
+onready var host = get_parent().get_parent()
+onready var cam = host.find_node("cam")
 
 func _ready():
 	zoom()
