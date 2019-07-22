@@ -4,9 +4,9 @@ func _ready():
 	prints("Event system ready")
 
 func create(event: String):
-	add_user_signal(event)
+	if not has_user_signal(event): add_user_signal(event)
 
-func createAll(events: Array):
+func needs(events: Array):
 	for event in events:
 		create(event)
 

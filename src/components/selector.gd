@@ -3,7 +3,7 @@ extends Node
 onready var selected: Node setget select
 
 func _ready():
-	events.createAll([
+	events.needs([
 		"selectable:created",
 		"selector:deselect",
 		"selector:select",
