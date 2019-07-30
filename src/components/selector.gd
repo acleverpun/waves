@@ -23,9 +23,10 @@ func onInputEvent(viewport, event, shapeIndex, entity):
 		select(entity)
 
 func select(entity: Node):
-	selected = entity
-	prints("Selected", selected.name, selected)
-	events.emit_signal("selector:select", selected)
+	if selected != entity:
+		selected = entity
+		prints("Selected", selected.name, selected)
+		events.emit_signal("selector:select", selected)
 
 func deselect():
 	if selected:

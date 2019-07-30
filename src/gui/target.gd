@@ -13,4 +13,4 @@ func onSelect(entity: Node):
 	text = entity.name
 
 func onDeselect(entity: Node):
-	text = null
+	text = ""
