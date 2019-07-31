@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/actors/player.gd" type="Script" id=1]
-[ext_resource path="res://src/components/mover.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/components/selector.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/components/camera.gd" type="Script" id=4]
+[ext_resource path="res://src/controllers/camera.gd" type="Script" id=2]
+[ext_resource path="res://src/controllers/movement.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/controllers/selection.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
@@ -12,11 +12,18 @@ height = 0.0
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
+[node name="controllers" type="Node" parent="."]
+
+[node name="cam" type="Camera2D" parent="controllers"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+script = ExtResource( 2 )
+
+[node name="movement" parent="controllers" instance=ExtResource( 3 )]
+
+[node name="selection" parent="controllers" instance=ExtResource( 4 )]
+
 [node name="components" type="Node" parent="."]
-
-[node name="mover" parent="components" instance=ExtResource( 2 )]
-
-[node name="selector" parent="components" instance=ExtResource( 3 )]
 
 [node name="sprite" type="Polygon2D" parent="."]
 position = Vector2( 4, 16 )
@@ -26,8 +33,3 @@ polygon = PoolVector2Array( -8, -8, -8, -24, 0, -24, 0, -8 )
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
 shape = SubResource( 1 )
-
-[node name="cam" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 0.5, 0.5 )
-script = ExtResource( 4 )

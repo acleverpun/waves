@@ -5,8 +5,8 @@ onready var selected: Node setget select
 func _ready():
 	events.needs([
 		"selectable:created",
-		"selector:deselect",
-		"selector:select",
+		"selection:deselect",
+		"selection:select",
 	])
 
 	events.on("selectable:created", self, "selectableCreated")
@@ -29,10 +29,10 @@ func select(entity: Node):
 	if selected != entity:
 		selected = entity
 		prints("Selected", selected.name, selected)
-		events.emit_signal("selector:select", selected)
+		events.emit_signal("selection:select", selected)
 
 func deselect():
 	if selected:
 		prints("Deselected", selected.name, selected)
 		selected = null
-		events.emit_signal("selector:deselect", selected)
+		events.emit_signal("selection:deselect", selected)

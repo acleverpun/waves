@@ -2,12 +2,12 @@ extends Label
 
 func _ready():
 	events.needs([
-		"selector:deselect",
-		"selector:select",
+		"selection:deselect",
+		"selection:select",
 	])
 
-	events.on("selector:select", self, "onSelect")
-	events.on("selector:deselect", self, "onDeselect")
+	events.on("selection:select", self, "onSelect")
+	events.on("selection:deselect", self, "onDeselect")
 
 func onSelect(entity: Node):
 	text = entity.name
