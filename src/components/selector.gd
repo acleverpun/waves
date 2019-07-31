@@ -11,6 +11,9 @@ func _ready():
 
 	events.on("selectable:created", self, "selectableCreated")
 
+func _input(event):
+	if Input.is_action_pressed("target.clear"): deselect()
+
 func selectableCreated(entity: Node):
 	var body = entity.get_node("body")
 	body.connect("input_event", self, "onInputEvent", [ entity ])
